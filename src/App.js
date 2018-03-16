@@ -1,19 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ListingsContainer from './ListingsContainer';
+import SubredditsContainer from './SubredditsContainer';
+import { getListings, getSubreddits } from './utils/client';
 import './stylesheets/App.css';
 
-class App extends Component {
+export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = { subreddits: [], listings: [] };
+  }
+
+  componentDidMount() {
+    getSubreddits()
+      .then(subreddits => this.setState({ subreddits }));
+  }
+
+  setActiveSubreddit(subreddit) {
+    getListings(subreddit)
+      .then(listings => this.setState({ listings }));
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    return(
+      <div id="app">
+        <ListingsContainer listings={this.state.listings} />
+        <SubredditsContainer
+          subreddits={this.state.subreddits}
+          setActiveSubreddit={this.setActiveSubreddit.bind(this)} />
       </div>
     );
   }
 }
-
-export default App;
