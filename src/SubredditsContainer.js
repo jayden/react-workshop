@@ -7,19 +7,20 @@ export default function SubredditsContainer(props) {
     <div id='subreddits'>
       <div id='header'>Subreddits</div>
       <ul>
-        { renderSubreddits(props.subreddits, props.setActiveSubreddit) }
+        { renderSubreddits(props) }
       </ul>
     </div>
   );
 }
 
-function renderSubreddits(subreddits, setActiveSubreddit) {
-  return subreddits.map(item => {
+function renderSubreddits(props) {
+  return props.subreddits.map(item => {
     return (
       <Subreddit
         key={item.id}
+        isActive={props.activeSubreddit === item.display_name}
         name={item.display_name}
-        activate={setActiveSubreddit}
+        activate={props.setActiveSubreddit}
         url={item.url} />
     );
   });

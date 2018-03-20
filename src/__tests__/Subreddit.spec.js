@@ -9,6 +9,7 @@ describe('Subreddit', () => {
   const subreddit = { activate: jest.fn(), name: "Stranger Things", url: "/stranger_things" };
   const component = shallow(
       <Subreddit activate={subreddit.activate}
+        isActive={false}
         name={subreddit.name}
         url={subreddit.url} />);
 
@@ -22,14 +23,19 @@ describe('Subreddit', () => {
     expect(props.onClick).toEqual(expect.any(Function));
   });
 
-  it("updates the className to 'active' and invokes activate prop on click", () => {
-    const props = component.props();
-    expect(props.className).toEqual('');
+  it("invokes activate prop on click", () => {
+    component.props().onClick();
 
-    props.onClick();
-    component.update();
+    expect(subreddit.activate).toHaveBeenCalledWith(subreddit.url, subreddit.name);
+  });
+
+  it("sets the className to 'active' if isActive prop is true", () => {
+    const component = shallow(
+        <Subreddit activate={subreddit.activate}
+          isActive={true}
+          name={subreddit.name}
+          url={subreddit.url} />);
 
     expect(component.props().className).toEqual('active');
-    expect(subreddit.activate).toHaveBeenCalledWith(subreddit.url);
   });
 });

@@ -47,7 +47,8 @@ describe('App', () => {
     const props = subredditsContainer.props();
     expect(props).toEqual({
       subreddits: app.state("subreddits"),
-      setActiveSubreddit: expect.any(Function)
+      setActiveSubreddit: expect.any(Function),
+      activeSubreddit: app.state("activeSubreddit")
     });
 
     props.setActiveSubreddit("awesome-subreddit");
