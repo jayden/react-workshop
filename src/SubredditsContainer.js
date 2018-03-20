@@ -1,10 +1,11 @@
 import React from 'react';
 import Subreddit from './Subreddit';
+import './stylesheets/SubredditsContainer.css';
 
 export default function SubredditsContainer(props) {
   return(
-    <div className="navigation">
-      <div className="header">Navigation</div>
+    <div id='subreddits'>
+      <div id='header'>Subreddits</div>
       <ul>
         { renderSubreddits(props.subreddits, props.setActiveSubreddit) }
       </ul>

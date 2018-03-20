@@ -1,0 +1,35 @@
+.scoreContainer {
+  background-color: #f5f5f5;
+}
+
+.score {
+  font-size: 1.5em;
+  text-align: center;
+  margin: 1em;
+  color: #2d2d2d;
+}
+
+.titleContainer {
+  width: 100%;
+  background-color: #fafafa;
+}
+
+.title {
+  margin: 0.5em 1em;
+
+  a {
+    font-size: 1em;
+    text-decoration: none;
+    color: #000000;
+
+    :hover {
+      color: #27a8e0;
+    }
+  }
+}
+
+.author {
+  margin: 0.5em 1em;
+  font-size: 1em;
+  color: #afb3b9;
+}

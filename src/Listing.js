@@ -1,5 +1,6 @@
 import React from 'react';
 import { decode } from  './utils/entityDecoder';
+import './stylesheets/Listing.css';
 
 export default function Listing(props) {
   return (
